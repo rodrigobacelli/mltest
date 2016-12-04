@@ -17,23 +17,11 @@ var gulp            = require("gulp"),
     sourcemaps      = require('gulp-sourcemaps'),
     autoprefixer    = require('gulp-autoprefixer'),
     concat          = require('gulp-concat'),
-    cssmin          = require('gulp-cssmin')
+    cssmin          = require('gulp-cssmin'),
+    uglify          = require('gulp-uglify')
 
 
 var isProd = process.env.NODE_ENV === "production"
-
-
-function createBundler(useWatchify) {
-    return browserify({
-        entries:      [ "./src/index.js" ],
-        transform:    [ [babelify, {}], [envify, {}] ],
-        plugin:       isProd || !useWatchify ? [] : [ lrload ],    // no additional configuration is needed
-        debug:        !isProd,
-        cache:        {},
-        packageCache: {},
-        fullPaths:    !isProd                       // for watchify
-    })
-}
 
 gulp.task('css', function () {
     return gulp.src('./src/scss/**/*.scss')
@@ -48,7 +36,15 @@ gulp.task('css', function () {
 
 gulp.task("watch:js", function() {
     // start JS file watching and rebundling with watchify
-    var bundler = createBundler(true)
+    var bundler = browserify({
+        entries:      [ "./src/index.js" ],
+        transform:    [ [babelify, {}], [envify, {}] ],
+        plugin:       [ lrload ],    // no additional configuration is needed
+        debug:        true,
+        cache:        {},
+        packageCache: {},
+        fullPaths:    true                       // for watchify
+    })
     var watcher = watchify(bundler)
     rebundle()
     return watcher
@@ -100,12 +96,21 @@ gulp.task('bundle:html', function() {
 })
 
 gulp.task("bundle:js", function() {
-    var bundler = createBundler(false)
-    bundler
+    var options = {
+        entries: "./src/index.js",   // Entry point
+        extensions: [".js", ".jsx"],            // consider files with these extensions as modules
+        debug: false,  // add resource map at the end of the file or not
+        paths: ["./src/"]           // This allows relative imports in require, with './scripts/' as root
+    };
+
+    return browserify(options)
+        .transform(babelify)
         .bundle()
-        .pipe(source("static/bundle.js"))
-        .pipe(gulp.dest("dist/js"))
-})
+        .pipe(source("bundle.js"))
+        .pipe(buffer())    // Stream files
+        .pipe(uglify())
+        .pipe(gulp.dest("./dist/static/"));
+});
 
 gulp.task('bundle:css', function () {
     return gulp.src('./src/scss/**/*.scss')
@@ -120,4 +125,4 @@ gulp.task('pre-commit', ['lint:js', 'lint:styles'])
 
 gulp.task("dev", ["watch:server", "watch:js", "watch:css"])
 
-gulp.task("build", ["bundle:html", "bundle:css"])
+gulp.task("build", ["bundle:html", "bundle:css", "bundle:js"])
