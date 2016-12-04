@@ -2,8 +2,7 @@
   "name": "mltest",
   "version": "0.1.0",
   "description": "Mercado Livre Front-End Test",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rodrigobacelli/mltest.git"
@@ -13,5 +12,9 @@
   "bugs": {
     "url": "https://github.com/rodrigobacelli/mltest/issues"
   },
-  "homepage": "https://rodrigobacelli.github.io/mltest"
+  "homepage": "https://rodrigobacelli.github.io/mltest",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7"
+  }
 }
