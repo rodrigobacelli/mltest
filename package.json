@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Mercado Livre Front-End Test",
   "scripts": {
-    "start": "gulp dev"
+    "start": "gulp dev",
+    "eslint": "gulp lint:js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "gulp-htmlmin": "^3.0.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-util": "^3.0.7",
+    "guppy-pre-commit": "^0.4.0",
     "livereactload": "^3.1.1",
     "nodemon": "^1.11.0",
     "react-proxy": "^1.1.8",

@@ -64,11 +64,13 @@ gulp.task("watch:server", function() {
         })
 })
 
-gulp.task('lint', function () {
+gulp.task('lint:js', function () {
     return gulp.src(['src/**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
-});
+})
+
+gulp.task('pre-commit', ['lint:js'])
 
 gulp.task("dev", ["watch:server", "watch:js"])
