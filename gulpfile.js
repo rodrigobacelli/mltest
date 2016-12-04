@@ -10,7 +10,8 @@ var gulp       = require("gulp"),
     watchify   = require("watchify"),
     babelify   = require("babelify"),
     envify     = require("envify"),
-    lrload     = require("livereactload")
+    lrload     = require("livereactload"),
+    sassLint   = require('gulp-sass-lint')
 
 
 var isProd = process.env.NODE_ENV === "production"
@@ -71,6 +72,13 @@ gulp.task('lint:js', function () {
         .pipe(eslint.failOnError());
 })
 
-gulp.task('pre-commit', ['lint:js'])
+gulp.task('lint:styles', function () {
+    return gulp.src('src/scss/**/*.scss')
+        .pipe(sassLint())
+        .pipe(sassLint.format())
+        .pipe(sassLint.failOnError())
+})
+
+gulp.task('pre-commit', ['lint:js', 'lint:styles'])
 
 gulp.task("dev", ["watch:server", "watch:js"])
