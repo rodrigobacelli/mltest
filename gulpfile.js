@@ -17,8 +17,7 @@ var gulp            = require("gulp"),
     sourcemaps      = require('gulp-sourcemaps'),
     autoprefixer    = require('gulp-autoprefixer'),
     concat          = require('gulp-concat'),
-    cssmin          = require('gulp-cssmin'),
-    rename          = require('gulp-rename')
+    cssmin          = require('gulp-cssmin')
 
 
 var isProd = process.env.NODE_ENV === "production"
@@ -114,7 +113,6 @@ gulp.task('bundle:css', function () {
         .pipe(autoprefixer())
         .pipe(concat('main.css'))
         .pipe(cssmin())
-        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./dist/css'))
 })
 
