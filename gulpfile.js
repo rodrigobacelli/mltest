@@ -125,4 +125,4 @@ gulp.task('pre-commit', ['lint:js', 'lint:styles'])
 
 gulp.task("dev", ["watch:server", "watch:js", "watch:css"])
 
-gulp.task("build", ["bundle:html", "bundle:css", "bundle:js"])
+gulp.task("build", ["precommit", "bundle:html", "bundle:css", "bundle:js"])
