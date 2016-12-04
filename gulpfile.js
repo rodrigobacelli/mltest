@@ -22,7 +22,13 @@ var gulp            = require("gulp"),
     ghPages         = require('gulp-gh-pages')
 
 
-var isProd = process.env.NODE_ENV === "production"
+gulp.task('set-env:dev', function() {
+    return process.env.NODE_ENV = 'development';
+});
+
+gulp.task('set-env:prod', function() {
+    return process.env.NODE_ENV = 'production';
+});
 
 gulp.task('css', function () {
     return gulp.src('./src/scss/**/*.scss')
@@ -105,7 +111,7 @@ gulp.task("bundle:js", function() {
     };
 
     return browserify(options)
-        .transform(babelify)
+        .transform([babelify, envify])
         .bundle()
         .pipe(source("bundle.js"))
         .pipe(buffer())    // Stream files
@@ -130,6 +136,6 @@ gulp.task('ghPagesDeploy', ["build"], function() {
 
 gulp.task('pre-commit', ['lint:js', 'lint:styles'])
 
-gulp.task("dev", ["watch:server", "watch:js", "watch:css"])
+gulp.task("dev", ["set-env:dev", "watch:server", "watch:js", "watch:css"])
 
-gulp.task("build", ["pre-commit", "bundle:html", "bundle:css", "bundle:js"])
+gulp.task("build", ["set-env:prod", "pre-commit", "bundle:html", "bundle:css", "bundle:js"])
