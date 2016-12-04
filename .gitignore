@@ -1,0 +1,5 @@
+# IntelliJ IDE
+.idea
+
+# Node Folders
+node_modules
