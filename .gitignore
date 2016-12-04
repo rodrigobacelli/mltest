@@ -1,5 +1,9 @@
 # IntelliJ IDE
 .idea
 
-# Node Folders
+# Node & NPM
 node_modules
+npm-debug*
+
+# Distribution Folder
+dist
