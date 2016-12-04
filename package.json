@@ -1,0 +1,17 @@
+{
+  "name": "mltest",
+  "version": "0.1.0",
+  "description": "Mercado Livre Front-End Test",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigobacelli/mltest.git"
+  },
+  "author": "Rodrigo Bacelli <rodrigobac@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/rodrigobacelli/mltest/issues"
+  },
+  "homepage": "https://rodrigobacelli.github.io/mltest"
+}
