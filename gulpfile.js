@@ -3,6 +3,7 @@
 var gulp       = require("gulp"),
     gutil      = require("gulp-util"),
     nodemon    = require("gulp-nodemon"),
+    eslint     = require('gulp-eslint'),
     source     = require("vinyl-source-stream"),
     buffer     = require("vinyl-buffer"),
     browserify = require("browserify"),
@@ -62,5 +63,12 @@ gulp.task("watch:server", function() {
             console.log("Server restarted")
         })
 })
+
+gulp.task('lint', function () {
+    return gulp.src(['src/**/*.js'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failOnError());
+});
 
 gulp.task("dev", ["watch:server", "watch:js"])

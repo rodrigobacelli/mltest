@@ -13,7 +13,12 @@ module.exports = {
         mocha: false,
         jasmine: false
     },
-    ecmaFeatures: {},
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+            modules: true
+        }
+    },
     globals: {},
     rules: {
         'comma-dangle': [2, 'never']

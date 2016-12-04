@@ -4,6 +4,7 @@
     "./config/eslint/legacy.js",
     "./config/eslint/globals.js"
   ],
+  "parser": "babel-eslint",
   "rules": {
     "func-names": ["off"],
     "indent": ["error", 4],
