@@ -3,11 +3,7 @@
   "version": "0.1.0",
   "description": "Mercado Livre Front-End Test",
   "scripts": {
-    "start": "babel-node server.js",
-    "bundle:prod": "NODE_ENV=production browserify site.js -t babelify -g envify -g uglifyify > bundle.js",
-    "watch": "npm run watch:server & npm run watch:bundle & wait",
-    "watch:server": "nodemon --exec babel-node --ignore bundle.js -- server.js",
-    "watch:bundle": "watchify site.js -v -t babelify -g envify -p livereactload -o bundle.js"
+    "start": "gulp dev"
   },
   "repository": {
     "type": "git",
