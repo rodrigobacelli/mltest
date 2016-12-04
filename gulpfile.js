@@ -18,7 +18,8 @@ var gulp            = require("gulp"),
     autoprefixer    = require('gulp-autoprefixer'),
     concat          = require('gulp-concat'),
     cssmin          = require('gulp-cssmin'),
-    uglify          = require('gulp-uglify')
+    uglify          = require('gulp-uglify'),
+    ghPages         = require('gulp-gh-pages')
 
 
 var isProd = process.env.NODE_ENV === "production"
@@ -120,6 +121,12 @@ gulp.task('bundle:css', function () {
         .pipe(cssmin())
         .pipe(gulp.dest('./dist/css'))
 })
+
+gulp.task('ghPagesDeploy', ["build"], function() {
+    return gulp.src('./dist/**/*')
+        .pipe(ghPages());
+});
+
 
 gulp.task('pre-commit', ['lint:js', 'lint:styles'])
 
