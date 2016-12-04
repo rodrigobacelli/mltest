@@ -134,7 +134,9 @@ gulp.task('ghPagesDeploy', ["build"], function() {
 });
 
 
-gulp.task('pre-commit', ['lint:js', 'lint:styles'])
+gulp.task('lint', ['lint:js', 'lint:styles'])
+
+gulp.task('pre-commit', ['lint'])
 
 gulp.task("dev", ["set-env:dev", "watch:server", "watch:js", "watch:css"])
 

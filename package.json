@@ -5,7 +5,9 @@
   "scripts": {
     "start": "gulp dev",
     "eslint": "gulp lint:js",
-    "stylelint": "gulp lint:styles"
+    "stylelint": "gulp lint:styles",
+    "lint": "gulp lint",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
