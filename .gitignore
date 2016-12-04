@@ -7,3 +7,6 @@ npm-debug*
 
 # Distribution Folder
 dist
+
+# Server Folder
+static

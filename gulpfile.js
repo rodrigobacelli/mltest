@@ -49,14 +49,14 @@ gulp.task("watch:js", function() {
         watcher
             .bundle()
             .on("error", gutil.log)
-            .pipe(source("bundle.js"))
+            .pipe(source("static/bundle.js"))
             .pipe(buffer())
             .pipe(gulp.dest("."))
     }
 })
 
 gulp.task("watch:server", function() {
-    nodemon({ script: "server.js", ext: "js", ignore: ["gulpfile.js", "bundle.js", "node_modules/*"] })
+    nodemon({ script: "server.js", ext: "js", ignore: ["gulpfile.js", "static/bundle.js", "node_modules/*"] })
         .on("change", function () {})
         .on("restart", function () {
             console.log("Server restarted")
