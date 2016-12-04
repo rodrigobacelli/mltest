@@ -11,7 +11,8 @@ var gulp       = require("gulp"),
     babelify   = require("babelify"),
     envify     = require("envify"),
     lrload     = require("livereactload"),
-    sassLint   = require('gulp-sass-lint')
+    sassLint   = require('gulp-sass-lint'),
+    htmlmin    = require('gulp-htmlmin')
 
 
 var isProd = process.env.NODE_ENV === "production"
@@ -79,6 +80,15 @@ gulp.task('lint:styles', function () {
         .pipe(sassLint.failOnError())
 })
 
+gulp.task('htmlMinify', function() {
+    return gulp.src('src/*.html')
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('dist'))
+})
+
+
 gulp.task('pre-commit', ['lint:js', 'lint:styles'])
 
 gulp.task("dev", ["watch:server", "watch:js"])
+
+gulp.task("build", ["htmlMinify"])
