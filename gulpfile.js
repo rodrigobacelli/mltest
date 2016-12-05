@@ -129,6 +129,8 @@ gulp.task('bundle:css', function () {
 })
 
 gulp.task('ghPagesDeploy', ["build"], function() {
+    gulp.src("./assets/**/*.*")
+        .pipe(gulp.dest('./dist/assets/'));
     return gulp.src('./dist/**/*')
         .pipe(ghPages());
 });
