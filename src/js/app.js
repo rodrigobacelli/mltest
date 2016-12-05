@@ -10,6 +10,14 @@ export default class App extends React.Component {
                     image="assets/img/products/ipad.jpg"
                     imageBig="assets/img/products/ipad_big.jpg"
                 />
+                <div className="offer" itemScope itemType="http://schema.org/Offer">
+                    <span itemProp="priceCurrency" content="USD">$</span>
+                    <span itemProp="price" content="4799.99">
+                        4799<small>.99</small>
+                    </span>
+                    <link itemprop="availability" href="http://schema.org/InStock" />
+                </div>
+
             </article>
         );
     }

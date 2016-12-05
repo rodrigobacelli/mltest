@@ -17,16 +17,11 @@ app.get("/static/css/main.css", function (req, res) {
     res.sendFile("/static/css/main.css", {root: __dirname})
 })
 
-app.get("/assets/**/*.*", function (req, res) {
-    var path = req.params[0] ? req.params[0] : 'index.html',
-        file = req.params[2] && req.params[3] ? req.params[2] + '.' + req.params[3] : 'index.html';
+app.get("/assets/**.*", function (req, res) {
+    var file_path = req.params[0] ? req.params[0] : 'index',
+        ext = req.params[2] ? req.params[2] : 'html';
 
-    var path_name = '';
-    if (path === 'index.html') {
-        path_name = '/assets/index.html'
-    } else {
-        path_name = '/assets/'+ path + '/' + file;
-    }
+    var path_name = './assets/'+ file_path + '.' + ext;
     res.sendFile(path_name, {root: __dirname})
 })
 
