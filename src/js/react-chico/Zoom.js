@@ -1,10 +1,15 @@
 import React from 'react';
 
 class Zoom extends React.Component {
+
+    componentDidMount() {
+        return new ch.Zoom(ch('#chico-zoom')[0]);
+    }
+
     render() {
         return (
             <a
-                id="zoom-default"
+                id="chico-zoom"
                 className="zoom"
                 href={this.props.imageBig}
                 target="_blank"

@@ -83,7 +83,7 @@ gulp.task("watch:server", function() {
 })
 
 gulp.task('lint:js', function () {
-    return gulp.src(['src/**/*.js'])
+    return gulp.src(['src/**/*.js', '!src/js/vendor/**'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
@@ -131,6 +131,8 @@ gulp.task('bundle:css', function () {
 gulp.task('bundle:assets', function() {
     gulp.src("./assets/**/*.*")
         .pipe(gulp.dest('./dist/assets/'))
+    gulp.src("./src/js/vendor/**/*.*")
+        .pipe(gulp.dest('./dist/static/vendor/'))
 })
 
 gulp.task('gh-pages-deploy', ["build"], function() {

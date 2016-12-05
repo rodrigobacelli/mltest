@@ -9,6 +9,10 @@ app.get("/static/bundle.js", function (req, res) {
     res.sendFile("/static/bundle.js", {root: __dirname})
 })
 
+app.get("/static/vendor/chico/chico.js", function (req, res) {
+    res.sendFile("/src/js/vendor/chico/chico.js", {root: __dirname})
+})
+
 app.get("/static/css/main.css", function (req, res) {
     res.sendFile("/static/css/main.css", {root: __dirname})
 })
