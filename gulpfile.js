@@ -128,7 +128,7 @@ gulp.task('bundle:css', function () {
         .pipe(gulp.dest('./dist/css'))
 })
 
-gulp.task('ghPagesDeploy', ["build"], function() {
+gulp.task('gh-pages-deploy', ["build"], function() {
     gulp.src("./assets/**/*.*")
         .pipe(gulp.dest('./dist/assets/'));
     return gulp.src('./dist/**/*')
