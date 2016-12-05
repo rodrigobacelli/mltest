@@ -126,20 +126,20 @@ gulp.task('bundle:css', function () {
         .pipe(autoprefixer())
         .pipe(concat('main.css'))
         .pipe(cssmin())
-        .pipe(gulp.dest('./dist/css'))
+        .pipe(gulp.dest('./dist/static/css'))
 })
 
 gulp.task('bundle:assets', function() {
     gulp.src("./assets/**/*.*")
         .pipe(gulp.dest('./dist/assets/'))
-    gulp.src("./src/js/vendor/**/assets/**.*")
+    gulp.src("./src/js/vendor/chico/assets/*.*")
         .pipe(gulp.dest('./dist/static/assets/'))
     gulp.src(["./src/js/vendor/**/*.*","!./src/js/vendor/**/assets/*.*"])
         .pipe(gulp.dest('./dist/static/vendor/'))
 })
 
-gulp.task('gh-pages-deploy', function() {
-    gulp.src('./dist/**')
+gulp.task('gh-pages-deploy', ['build'], function() {
+    return gulp.src('./dist/**/*')
         .pipe(ghPages())
 })
 
