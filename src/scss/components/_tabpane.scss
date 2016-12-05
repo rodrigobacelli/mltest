@@ -12,6 +12,25 @@
     &:target {
       display: block;
       z-index: 1;
+
+      ~ .product__tabpane__item--default {
+        display: none;
+      }
+    }
+
+    &.product__tabpane__item--default {
+      display: block;
+    }
+  }
+  #questions {
+
+    &:target {
+      display: block;
+      z-index: 1;
+
+      ~ .product__tabpane__item--default {
+          display: none;
+      }
     }
   }
 

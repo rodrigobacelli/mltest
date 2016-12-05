@@ -9,7 +9,7 @@ export default class Tabpane extends React.Component {
                     <li><a href="#questions" className="ch-tab">Questions</a></li>
                 </ul>
                 <div className="ch-box-lite">
-                    <div id="description" itemProp="description">
+                    <div className="product__tabpane__item--default" id="description" itemProp="description">
                         <p>
                             O iPad é tão fino e leve que você quaseesquece que está segurando!
                         </p>
