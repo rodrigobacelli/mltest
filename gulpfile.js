@@ -31,6 +31,7 @@ gulp.task('set-env:prod', function() {
 });
 
 gulp.task('css', function () {
+    gutil.log('Run Css Task');
     return gulp.src('./src/scss/**/*.scss')
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(sourcemaps.init())
@@ -131,12 +132,14 @@ gulp.task('bundle:css', function () {
 gulp.task('bundle:assets', function() {
     gulp.src("./assets/**/*.*")
         .pipe(gulp.dest('./dist/assets/'))
-    gulp.src("./src/js/vendor/**/*.*")
+    gulp.src("./src/js/vendor/**/assets/**.*")
+        .pipe(gulp.dest('./dist/static/assets/'))
+    gulp.src(["./src/js/vendor/**/*.*","!./src/js/vendor/**/assets/*.*"])
         .pipe(gulp.dest('./dist/static/vendor/'))
 })
 
-gulp.task('gh-pages-deploy', ["build"], function() {
-    gulp.src('./dist/**/*')
+gulp.task('gh-pages-deploy', function() {
+    gulp.src('./dist/**')
         .pipe(ghPages())
 })
 

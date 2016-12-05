@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 class Zoom extends React.Component {
 
@@ -10,7 +11,10 @@ class Zoom extends React.Component {
         return (
             <a
                 id="chico-zoom"
-                className="zoom"
+                className={cx(
+                    'zoom',
+                    this.props.className
+                )}
                 href={this.props.imageBig}
                 target="_blank"
                 itemProp="url"

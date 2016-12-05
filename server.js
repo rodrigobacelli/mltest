@@ -25,4 +25,12 @@ app.get("/assets/**.*", function (req, res) {
     res.sendFile(path_name, {root: __dirname})
 })
 
+app.get("/static/assets/**.*", function (req, res) {
+    var file_path = req.params[0] ? req.params[0] : 'index',
+        ext = req.params[2] ? req.params[2] : 'html';
+
+    var path_name = './assets/'+ file_path + '.' + ext;
+    res.sendFile(path_name, {root: __dirname})
+})
+
 app.listen(3000)

@@ -1,0 +1,43 @@
+.product {
+  h1 {
+    width: 100%;
+  }
+
+  &__offer,
+  &__notice,
+  &__related,
+  &__add-to-cart {
+    display: inline-block;
+    float: right;
+    margin-left: -4px;
+    vertical-align: top;
+    width: calc(100% - 500px);
+  }
+
+  &__image {
+    display: inline-block;
+    float: left;
+    margin-left: -4px;
+    vertical-align: top;
+  }
+
+  &__offer {
+    color: darkred;
+    font-size: 20px;
+    small {
+      font-size: 14px;
+      vertical-align: text-top;
+    }
+  }
+
+  &__related {
+    margin-top: 20px;
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid gray;
+    padding-top: 20px;
+    width: 100%;
+  }
+}

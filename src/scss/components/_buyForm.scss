@@ -1,0 +1,12 @@
+.product {
+    &__add-to-cart {
+        label {
+            display: block;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+        }
+    }
+}
