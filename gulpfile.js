@@ -128,12 +128,15 @@ gulp.task('bundle:css', function () {
         .pipe(gulp.dest('./dist/css'))
 })
 
-gulp.task('gh-pages-deploy', ["build"], function() {
+gulp.task('bundle:assets', function() {
     gulp.src("./assets/**/*.*")
-        .pipe(gulp.dest('./dist/assets/'));
-    return gulp.src('./dist/**/*')
-        .pipe(ghPages());
-});
+        .pipe(gulp.dest('./dist/assets/'))
+})
+
+gulp.task('gh-pages-deploy', ["build"], function() {
+    gulp.src('./dist/**/*')
+        .pipe(ghPages())
+})
 
 
 gulp.task('lint', ['lint:js', 'lint:styles'])
@@ -142,4 +145,4 @@ gulp.task('pre-commit', ['lint'])
 
 gulp.task("dev", ["set-env:dev", "watch:server", "watch:js", "watch:css"])
 
-gulp.task("build", ["set-env:prod", "pre-commit", "bundle:html", "bundle:css", "bundle:js"])
+gulp.task("build", ["set-env:prod", "pre-commit", "bundle:assets", "bundle:html", "bundle:css", "bundle:js"])
